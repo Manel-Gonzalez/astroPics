@@ -1,0 +1,14 @@
+[
+  {
+    "userName": "ricard",
+    "userId": "a5e876e1-6055-47f5-b532-383ee62a0fb5",
+    "image": "1711058326412_gravel.jpg",
+    "hashtags": "#gravel #bikes",
+    "timestamp": 1711058326622
+  },
+  {
+    "id": "a5e876e1-6055-47f5-b532-383ee62a0fb5",
+    "name": "ricard",
+    "password": "$2a$08$QjRx1.viN5JabAHhMj2SquZDw.YtSFq9hmnfcRVBBAoWcZlPZcCKC"
+  }
+]
