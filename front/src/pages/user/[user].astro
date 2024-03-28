@@ -1,11 +1,12 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Picture from "../components/Picture.astro";
-import config from "../config";
+import Layout from "../../layouts/Layout.astro";
+import config from "../../config";
+import Picture from "../../components/Picture.astro";
 
 const {user} = Astro.params;
+console.log(user);
 
-if (Astro.cookies.has("token")) {
+if (!Astro.cookies.has("token")) {
   return Astro.redirect("/login");
 }
 
@@ -22,6 +23,7 @@ try {
 } catch (err) {
   throw err;
 }
+console.log(images);
 ---
 
 <Layout title={"images from user " + user}>

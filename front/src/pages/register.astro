@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import config from "../config";
+import Tornar from "../components/Tornar.astro";
 
 let err;
 
@@ -16,25 +17,23 @@ if (Astro.request.method === "POST") {
     },
     body: JSON.stringify({name, password}),
   };
-  let resposta = await fetch(`${config.API_URL}/login`, options);
+  let resposta = await fetch(`${config.API_URL}/register`, options);
   resposta = await resposta.json();
 
   if (resposta.error) {
     err = resposta.error;
     return Astro.redirect("/login_error");
   } else {
-    const cookieOptions = {httpOnly: false, maxAge: 7200000};
-    Astro.cookies.set("token", resposta.token, cookieOptions);
-    return Astro.redirect("/");
+    return Astro.redirect("/login");
   }
 }
 ---
 
-<Layout title="Inicio de sesion">
+<Layout title="Registro de Cuenta">
   <div
     class="w-2/3 md:w-1/2 flex flex-col mx-auto content-center p-4 md:p-8 my-8 bg-white rounded-md shadow-md shadow-neutral-400"
   >
-    <form method="POST" class="m-auto flex flex-col mt-4 w-100">
+    <form method="POST" class="m-auto flex flex-col mt-4">
       <div class="">
         <div class="">
           <label
@@ -63,16 +62,15 @@ if (Astro.request.method === "POST") {
           />
         </div>
       </div>
-
       <div class="flex flex-row">
         <button
           class="shadow-md shadow-neutral-500 focus:shadow-inner hover:shadow-inner hover:shadow-neutral-400/60 focus:shadow-neutral-600 text-neutral-700 font-bold py-2 px-4 rounded mx-auto"
         >
-          Login
+          Create
         </button>
         <a
           class="shadow-md shadow-neutral-500 focus:shadow-inner hover:shadow-inner hover:shadow-neutral-400/60 focus:shadow-neutral-600 text-neutral-700 font-bold py-2 px-4 rounded mx-auto"
-          href="/register">To Register</a
+          href="/login">To Login</a
         >
       </div>
     </form>

@@ -48,9 +48,6 @@ function writeUImages(data) {
 
 // Middleware per verificar el JWT en la cookie
 const checkToken = (req, res, next) => {
-  console.log("1", req.cookies);
-  console.log("2", req.cookie);
-  console.log("3", req.body);
   const token = req.cookies?.token; // Obté el token des de la cookie de la petició
   if (!token) token = req.headers["authorization"]?.split(" ")[1]; //obté token de bearer auth
 
